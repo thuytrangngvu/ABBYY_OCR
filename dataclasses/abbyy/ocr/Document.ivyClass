@@ -1,0 +1,4 @@
+Document #class
+abbyy.ocr #namespace
+result String #field
+result PERSISTENT #fieldModifier

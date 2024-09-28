@@ -1,0 +1,100 @@
+{
+  "format" : "10.0.0",
+  "id" : "1912BDED0DCF8B7D",
+  "config" : {
+    "data" : "abbyy.ocr.Data"
+  },
+  "elements" : [ {
+      "id" : "f0",
+      "type" : "RequestStart",
+      "name" : "start.ivp",
+      "config" : {
+        "callSignature" : "start",
+        "outLink" : "start.ivp",
+        "input" : {
+          "code" : [
+            "out.document = new abbyy.ocr.Document();",
+            "out.document.setResult(\"\");"
+          ]
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 64 }
+      },
+      "connect" : { "id" : "f2", "to" : "f3" }
+    }, {
+      "id" : "f1",
+      "type" : "TaskEnd",
+      "visual" : {
+        "at" : { "x" : 752, "y" : 64 }
+      }
+    }, {
+      "id" : "f3",
+      "type" : "DialogCall",
+      "name" : "Datei hochladen",
+      "config" : {
+        "dialogId" : "abbyy.ocr.upload_file",
+        "startMethod" : "start(abbyy.ocr.Data)",
+        "output" : {
+          "map" : {
+            "out" : [
+              "result.data",
+              "result.data"
+            ]
+          }
+        },
+        "call" : {
+          "params" : [
+            { "name" : "data", "type" : "abbyy.ocr.Data" }
+          ],
+          "map" : {
+            "param.data" : [
+              "in",
+              "in",
+              "in"
+            ]
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 240, "y" : 64 }
+      },
+      "connect" : { "id" : "f8", "to" : "f7" }
+    }, {
+      "id" : "f7",
+      "type" : "Script",
+      "name" : "Process",
+      "config" : {
+        "output" : {
+          "code" : [
+            "import fileupload.Bean;",
+            "",
+            "in.runtime = System.nanoTime();",
+            "Bean bean = new Bean();",
+            "out.document.result = bean.process(in.filePath);",
+            "in.runtime = (System.nanoTime() - in.runtime)/1000000000.0;"
+          ]
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 400, "y" : 64 }
+      },
+      "connect" : { "id" : "f6", "to" : "f5" }
+    }, {
+      "id" : "f5",
+      "type" : "Script",
+      "name" : "Result",
+      "config" : {
+        "output" : {
+          "code" : [
+            "ivy.log.info(\"Run in: \" + in.runtime + \" seconds\");",
+            "ivy.log.info(in.document.result);"
+          ]
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 576, "y" : 64 }
+      },
+      "connect" : { "id" : "f4", "to" : "f1" }
+    } ]
+}

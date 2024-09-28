@@ -1,0 +1,38 @@
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:ic="http://ivyteam.ch/jsf/component"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:pe="http://primefaces.org/ui/extensions"
+>
+    <h:body>
+        <ui:composition template="/layouts/frame-10.xhtml">
+            <ui:define name="title">upload_file</ui:define>
+            <ui:define name="content">
+                <h3>&#160;Bitte laden Sie Ihre Datei hier hoch&#160;</h3>
+                <p:growl id="messages" showDetail="true" />
+                <h:form enctype="multipart/form-data">
+                    <h:panelGrid>
+                        <p:fileUpload id="file" value="#{bean.file}" mode="simple" skinSimple="true" allowTypes="/(\.|\/)(pdf|png|jpg|jpeg)$/" accept=".pdf,.png,.jpg,.jpeg" />
+                        <h:outputText value="" />
+                        <p:commandButton value="Upload" ajax="false" action="#{bean.upload(data.data)}" styleClass="p-button-outlined" />
+                    </h:panelGrid>
+
+                    <p:panel styleClass="p-mt-4" rendered="#{bean.file.getFileName() ne null}">
+                        <ul>
+                            <li>
+                                <h:outputText value="#{bean.file.getFileName()}" />
+                            </li>
+                        </ul>
+                    </p:panel>
+                    <div style="display: block; float: right;">
+                        <p:commandLink id="cancel" actionListener="#{ivyWorkflowView.cancel()}" value="Abbrechen" />
+                        <p:commandButton value="Fortfahren" actionListener="#{logic.close}" icon="pi pi-check" styleClass="p-button-success p-mt-3" style="margin-left: 20px;" />
+                    </div>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

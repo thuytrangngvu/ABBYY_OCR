@@ -1,0 +1,8 @@
+Data #class
+abbyy.ocr #namespace
+document abbyy.ocr.Document #field
+document PERSISTENT #fieldModifier
+filePath java.nio.file.Path #field
+filePath PERSISTENT #fieldModifier
+runtime Double #field
+runtime PERSISTENT #fieldModifier

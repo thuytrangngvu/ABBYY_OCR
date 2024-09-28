@@ -1,0 +1,6 @@
+RestClients:
+  ABBYY:
+    UUID: b6e23053-12e1-49f3-b306-54b00dcce677
+    Url: https://cloud.ocrsdk.com/v2/
+    Features:
+    - ch.ivyteam.ivy.rest.client.mapper.JsonFeature

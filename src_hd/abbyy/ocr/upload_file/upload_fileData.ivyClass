@@ -1,0 +1,4 @@
+upload_fileData #class
+abbyy.ocr.upload_file #namespace
+data abbyy.ocr.Data #field
+data PERSISTENT #fieldModifier
