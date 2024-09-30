@@ -26,7 +26,7 @@
       "id" : "f1",
       "type" : "TaskEnd",
       "visual" : {
-        "at" : { "x" : 752, "y" : 64 }
+        "at" : { "x" : 864, "y" : 64 }
       }
     }, {
       "id" : "f3",
@@ -94,6 +94,38 @@
       },
       "visual" : {
         "at" : { "x" : 576, "y" : 64 }
+      },
+      "connect" : { "id" : "f10", "to" : "f9" }
+    }, {
+      "id" : "f9",
+      "type" : "DialogCall",
+      "name" : "Result",
+      "config" : {
+        "dialogId" : "abbyy.ocr.result",
+        "startMethod" : "start(abbyy.ocr.Data)",
+        "output" : {
+          "map" : {
+            "out" : [
+              "in",
+              "result.data",
+              "result.data"
+            ]
+          }
+        },
+        "call" : {
+          "params" : [
+            { "name" : "data", "type" : "abbyy.ocr.Data" }
+          ],
+          "map" : {
+            "param.data" : [
+              "in",
+              "in"
+            ]
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 736, "y" : 64 }
       },
       "connect" : { "id" : "f4", "to" : "f1" }
     } ]

@@ -6,3 +6,5 @@ filePath java.nio.file.Path #field
 filePath PERSISTENT #fieldModifier
 runtime Double #field
 runtime PERSISTENT #fieldModifier
+contentType String #field
+contentType PERSISTENT #fieldModifier

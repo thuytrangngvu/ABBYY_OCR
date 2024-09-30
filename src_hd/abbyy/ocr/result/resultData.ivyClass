@@ -1,0 +1,4 @@
+resultData #class
+abbyy.ocr.result #namespace
+data abbyy.ocr.Data #field
+data PERSISTENT #fieldModifier

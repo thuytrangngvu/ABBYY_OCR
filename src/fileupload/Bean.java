@@ -52,6 +52,7 @@ public class Bean {
 			fos.write(file.getContent());
 			fos.flush();
 		}
+        data.setContentType(file.getContentType());
         data.setFilePath(_file.toPath());
     }
     
